@@ -22,6 +22,7 @@ export default function TiltedCard({
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
+  linkUrl = null,
 }) {
   const ref = useRef(null);
 
@@ -73,17 +74,25 @@ export default function TiltedCard({
     rotateFigcaption.set(0);
   }
 
+  function handleClick() {
+    if (linkUrl) {
+      window.open(linkUrl, '_blank');
+    }
+  }
+
   return (
     <figure
       ref={ref}
-      className="tilted-card-figure"
+      className={`tilted-card-figure ${linkUrl ? 'clickable' : ''}`}
       style={{
         height: containerHeight,
         width: containerWidth,
+        cursor: linkUrl ? 'pointer' : 'default',
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       {showMobileWarning && (
         <div className="tilted-card-mobile-alert">

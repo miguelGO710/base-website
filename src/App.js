@@ -216,6 +216,7 @@ function App() {
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={true}
+            linkUrl="https://br.linkedin.com/in/jonas-decorte-marmello-687277130"
             overlayContent={
               <p className="tilted-card-demo-text">
                 Jonas Marmello
@@ -236,6 +237,7 @@ function App() {
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={true}
+            linkUrl="https://www.instagram.com/_rafaelsimas/"
             overlayContent={
               <p className="tilted-card-demo-text">
                 Rafael Simas
@@ -256,6 +258,7 @@ function App() {
             showMobileWarning={false}
             showTooltip={true}
             displayOverlayContent={true}
+            linkUrl="https://www.instagram.com/miguelabreu710/"
             overlayContent={
               <p className="tilted-card-demo-text">
                 Miguel Abreu
