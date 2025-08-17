@@ -1,0 +1,73 @@
+.card-spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 2rem;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(139, 92, 246, 0.25);
+  /* Ensure hardware acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--spotlight-color, rgba(139, 92, 246, 0.15)), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  /* Ensure hardware acceleration */
+  transform: translateZ(0);
+  will-change: opacity, background;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.9;
+  --spotlight-color: rgba(139, 92, 246, 0.4);
+}
+
+.card-spotlight:hover,
+.card-spotlight:focus-within {
+  transform: perspective(1000px) rotateX(8deg) rotateY(8deg) translateZ(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Fallback for browsers that don't support CSS custom properties */
+@supports not (background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%)) {
+  .card-spotlight::before {
+    background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15), transparent 80%);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card-spotlight {
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-spotlight {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .card-spotlight::before {
+    /* Reduce spotlight effect intensity on mobile for better performance */
+    --spotlight-color: rgba(139, 92, 246, 0.1);
+  }
+}
