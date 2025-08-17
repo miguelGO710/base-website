@@ -67,7 +67,7 @@
 }
 
 .card__label {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 1);
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 500;
